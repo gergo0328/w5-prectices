@@ -28,21 +28,45 @@ console.log(detectSex ({
 }
 ));*/
 
-console.log (beers);
+//---------------------------------------------------------------------------------------------//
 
-const beerSectionComponent = function (inner, id) {
-    return `
-        <section id="${id}">${inner}</section>   
-    `
-}
 
-const beerCardComponent = function (title, sub, text) {
+
+
+  //
+const beerCardComponent = function (name, company, type) {
     return `
         <div class="card">
-            <time datetime="${title}">${title}</time>
-            <time datetime="${sub}">${sub}</time>
-            <time datetime="${text}">${text}</time>
+            <div class="beerName">${name}</div>
+            <div class="beerCompany">${company}</div>
+            <div class="beerType">${type}</div>
         </div>
     `
-    
 }
+
+const beerTitleComponent = `
+<h1>Beers</h1>
+`
+
+const loadEvent = function (){
+    const rootElement = document.getElementById("root"); 
+    console.log (rootElement)
+    rootElement.insertAdjacentHTML("beforeend",beerTitleComponent)  //ez egy metódus, 2 stringet kér: egy position (nem CSS) és egy stringet amit HTML-é tud konvertálni
+
+    console.log (beers.cards)
+    console.log (beers.logo)
+
+    //for-on belül, of-on után tömb nevét és elérését.
+    for (const beer of beers.cards) {
+    console.log(beer)
+   // console.log(beers.cards[0].title)
+    rootElement.insertAdjacentHTML("beforeend",beerCardComponent(beer.title, beer.sub, beer.text))
+
+}
+
+    }
+
+    // ha van adat a forof ciklust használjuk ha nincs akkor a sima for (i++)
+
+
+ window.addEventListener("load", loadEvent)  //eseményfigyelő mindig legyen benne a JS-ben!

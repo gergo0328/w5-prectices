@@ -35,7 +35,7 @@ const beerSectionComponent = function (inner, id) {
         <section id="${id}">${inner}</section>   
     `
 }
-console.log (cards);
+
 const beerCardComponent = function (title, sub, text) {
     return `
         <div class="card">
